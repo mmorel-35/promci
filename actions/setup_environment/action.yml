@@ -15,7 +15,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - uses: actions/cache@v3
+    - uses: actions/cache@v4
       if: inputs.enable_go == 'true'
       with:
         path: |
@@ -24,7 +24,7 @@ runs:
         key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
         restore-keys: |
           ${{ runner.os }}-go-
-    - uses: actions/cache@v3
+    - uses: actions/cache@v4
       if: inputs.enable_npm == 'true'
       with:
         path: |
