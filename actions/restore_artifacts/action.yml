@@ -2,14 +2,19 @@
 # Tar is used because the default actions do not preserve directory structure
 # and file mode.
 name: Restore artifacts
+inputs:
+  artifacts_pattern:
+    type: string
+    description: A glob pattern matching the artifacts that should be downloaded
 runs:
   using: composite
   steps:
     - name: Download all workflow run artifacts
       uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
       with:
-        name: artifact
+        merge-multiple: true
         path: .artifacts
+        pattern: ${{ inputs.artifacts_pattern }}
     - run: |
         for tar in .artifacts/*.tar
         do
