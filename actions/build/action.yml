@@ -24,4 +24,5 @@ runs:
       shell: bash
     - uses: ./.github/promci/actions/save_artifacts
       with:
+        artifact_name: build-${{ inputs.thread }}
         directory: .build
