@@ -2,6 +2,9 @@
 # and file mode.
 name: Save artifacts
 inputs:
+  artifact_name:
+    type: string
+    description: Path of the directory to save
   directory:
     type: string
     description: Path of the directory to save
@@ -14,4 +17,5 @@ runs:
       shell: bash
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4.4.0
       with:
+        name: ${{ inputs.artifact_name }}
         path: artifact-*.tar
